@@ -20,6 +20,7 @@
     "rules": {
         "react/prop-types": "off",
         "react/react-in-jsx-scope": "off",
-		"react/self-closing-comp": ["error", {"component": true,"html": true}]
+		"react/self-closing-comp": ["error", {"component": true,"html": true}],
+        "@typescript-eslint/explicit-function-return-type": "off"
     }
 }

@@ -1,34 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
 import './App.css'
+import { type User } from './types/user.d'
 
-function App() {
-  const [count, setCount] = useState(0)
+function App () {
+  const [users, setUsers] = useState<User[]>([])
+
+  useEffect(() => {
+    fetch('https://randomuser.me/api/?page=3&results=100')
+      .then(async apiResult => await apiResult.json())
+      .then(jsonResult => {
+        console.log(jsonResult)
+        setUsers(jsonResult.results)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }, [])
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    <>
+      <h1>React Technical Test </h1>
+      {
+       JSON.stringify(users)
+      }
+    </>
   )
 }
 
