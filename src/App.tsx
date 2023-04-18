@@ -6,7 +6,7 @@ function App () {
   const [users, setUsers] = useState<User[]>([])
 
   useEffect(() => {
-    fetch('https://randomuser.me/api/?page=3&results=100')
+    fetch('https://randomuser.me/api/?page=3&results=10')
       .then(async apiResult => await apiResult.json())
       .then(jsonResult => {
         console.log(jsonResult)
@@ -23,6 +23,7 @@ function App () {
       {
        JSON.stringify(users)
       }
+      <br />
     </>
   )
 }
