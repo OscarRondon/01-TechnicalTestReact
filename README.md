@@ -4,7 +4,7 @@ https://xxxxx. To achive this, you must use de API provided by https://randomuse
 Here are the steps to follow:
 
 - [X] Fetch 100 rows of data using the api
-- [] Display the data in as table format, similar to the example.
+- [X] Display the data in as table format, similar to the example.
 - [] Provide the option to color rows as shown in the example
 - [] Allow the data to be sorted by country as desmostrated in the example
 - [] Enable the ability to delete a row as shown in the example
