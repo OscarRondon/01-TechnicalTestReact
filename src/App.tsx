@@ -1,13 +1,20 @@
-import { useEffect, useRef, useState, useMemo } from 'react'
 import './App.css'
+import { useEffect, useRef, useMemo } from 'react'
+import { useReducerApp } from './hooks/useReducerApp'
 import { SortBy, type User } from './types/user.d'
 import { UsersList } from './components/UsersList'
 
 function App () {
-  const [users, setUsers] = useState<User[]>([])
-  const [showColors, setShowColors] = useState(false)
-  const [sorting, setSorting] = useState<SortBy>(SortBy.NONE)
-  const [filterCountry, setFilterCountry] = useState<string | null>(null)
+  const {
+    users,
+    showColors,
+    sorting,
+    filterCountry,
+    setUsers,
+    setShowColors,
+    setSorting,
+    setFilterCountry
+  } = useReducerApp()
 
   const originalUsers = useRef<User[]>([])
 
@@ -33,7 +40,7 @@ function App () {
     fetch('https://randomuser.me/api/?page=3&results=10')
       .then(async apiResult => await apiResult.json())
       .then(jsonResult => {
-        setUsers(jsonResult.results)
+        setUsers(jsonResult.results as User[])
         originalUsers.current = jsonResult.results
       })
       .catch(err => {
